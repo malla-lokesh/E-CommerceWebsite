@@ -1,0 +1,46 @@
+.musicTitle {
+    text-align: center;
+    margin-top: 30px;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.products {
+    display: flex;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.productTitle {
+    font-size: large;
+}
+
+.priceAndCartButton {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.product1 {
+    flex: 1;
+    text-align: center;
+}
+
+.product2 {
+    flex: 1;
+    text-align: center;
+}
+
+.productImage {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+}
+
+.productCartButton {
+    border: none;
+    color: white;
+    background-color: rgb(112, 112, 255);
+    padding: 8px 14px 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}

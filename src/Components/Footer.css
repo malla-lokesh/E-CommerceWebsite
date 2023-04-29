@@ -1,0 +1,31 @@
+.footerDiv {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(82, 178, 210);
+    height: 75px;
+    align-items: center;
+}
+
+.footerTitle {
+    font-size: xx-large;
+    color: white;
+    align-items: center;
+}
+
+.mediaLinks {
+    display: flex;
+    width: 350px;
+    justify-content: space-around;
+}
+
+.yt {
+    width: 30px;
+}
+
+.spotify {
+    width: 60px;
+}
+
+.facebook {
+    width: 30px;
+}
