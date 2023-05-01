@@ -1,8 +1,8 @@
 import React from "react";
 import './Footer.css';
-import yt from './Youtube.png'
-import spotify from './spotify.png'
-import facebook from './facebook.jfif';
+import yt from './images/Youtube.png';
+import spotify from './images/spotify.png';
+import facebook from './images/facebook.jfif';
 
 const Footer = () => {
     return (

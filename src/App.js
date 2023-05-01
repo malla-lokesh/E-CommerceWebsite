@@ -1,27 +1,26 @@
 import './App.css';
-import React from 'react';
-import Products from './Components/Products';
-import Footer from './Components/Footer';
+import React, { useState } from 'react';
+import Products from './Components/Products/Products';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import Modal from './Components/UI/Modal';
+import Cart from './Components/Cart/Cart';
 
 function App() {
+  const [showCart, setShowCart] = useState(false);
+
   return (
     <React.Fragment>
-      <header>
-        <div className='nav'>
-          <a href='./index.html'>HOME</a>
-          <a href='./index.html'>STORE</a>
-          <a href='./index.html'>ABOUT</a>
-          <div className='cart'>
-            Cart
-          </div>
-        </div>
-      </header>
+      <Modal showCart={showCart} hideCart={() => setShowCart(false)}>
+        {showCart && <Cart hideCart={() => setShowCart(false)}/>}
+      </Modal>
+      <Header onShow={() => setShowCart(true)} showCart={showCart}/>
       <div className='title'>
         The Generics
       </div>
       <Products />
       <div className='cartButtonDiv'>
-        <button className='cartButton'>
+        <button className='cartButton' onClick={() => setShowCart(true)}>
           See the Cart
         </button>
       </div>

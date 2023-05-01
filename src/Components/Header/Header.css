@@ -1,0 +1,30 @@
+header {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cart {
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 5px 8px 5px 8px;
+    cursor: pointer;
+    background-color: black;
+}
+
+.cart:active {
+    background-color: white;
+    color: black;
+}
