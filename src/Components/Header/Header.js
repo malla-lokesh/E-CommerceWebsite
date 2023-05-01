@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import './Header.css';
+import CartContext from "../Store/CartContext";
 
 const Header = (props) => {
+    const cartCtx = useContext(CartContext);
+
     return (
         <header>
             <div className='nav'>
@@ -10,6 +13,7 @@ const Header = (props) => {
                 <a href='./index.html'>ABOUT</a>
                 <button className='cart' onClick={props.onShow}>
                     Cart
+                    <span className='cartQuantity'>{cartCtx.itemsQuantity}</span>
                 </button>
             </div>
         </header>

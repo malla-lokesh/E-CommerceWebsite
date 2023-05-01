@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import './Cart.css';
+import CartContext from "../Store/CartContext";
 
 const Cart = (props) => {
+    const cartCtx = useContext(CartContext);
+
+    const cart = cartCtx.cartItems.map((item) => {
+        return <div className='items'>
+                <div className='cartItem'>
+                    <div className='cartItemImageAndName'>
+                        <img src={item.imageURL} alt="colors" className='cartItemImage'/>
+                        <div className='cartItemTitle'>
+                            {item.title}
+                        </div>
+                    </div>
+                    <div className='cartItemQuantity'>
+                        {item.quantity}
+                    </div>
+                    <div className='cartPriceAndRemoveButton'>
+                        <div className='cartItemPrice'>
+                            {item.price}
+                        </div>
+                        <button className='removeButton'>
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+    })
+
     return (
         <React.Fragment>
             <div className='cartTitleAndCloseButton'>
@@ -23,67 +51,7 @@ const Cart = (props) => {
                     Price
                 </div>
             </div>
-            <div className='items'>
-                <div className='cartItem'>
-                    <div className='cartItemImageAndName'>
-                        <img src="https://prasadyash2411.github.io/ecom-website/img/Album%201.png" alt="colors" className='cartItemImage'/>
-                        <div>
-                            Colors
-                        </div>
-                    </div>
-                    <div className='cartItemQuantity'>
-                        2
-                    </div>
-                    <div className='cartPriceAndRemoveButton'>
-                        <div className='cartItemPrice'>
-                            100
-                        </div>
-                        <button className='removeButton'>
-                            Remove
-                        </button>
-                    </div>
-                </div>
-                <hr/>
-                <div className='cartItem'>
-                    <div className='cartItemImageAndName'>
-                        <img src="https://prasadyash2411.github.io/ecom-website/img/Album%202.png" alt="colors" className='cartItemImage'/>
-                        <div className='cartItemTitle'>
-                            Black and white Colors
-                        </div>
-                    </div>
-                    <div className='cartItemQuantity'>
-                        3
-                    </div>
-                    <div className='cartPriceAndRemoveButton'>
-                        <div className='cartItemPrice'>
-                            50
-                        </div>
-                        <button className='removeButton'>
-                            Remove
-                        </button>
-                    </div>
-                </div>
-                <hr/>
-                <div className='cartItem'>
-                    <div className='cartItemImageAndName'>
-                        <img src="https://prasadyash2411.github.io/ecom-website/img/Album%203.png" alt="colors" className='cartItemImage'/>
-                        <div className='cartItemTitle'>
-                            Yellow and Black Colors
-                        </div>
-                    </div>
-                    <div className='cartItemQuantity'>
-                        1
-                    </div>
-                    <div className='cartPriceAndRemoveButton'>
-                        <div className='cartItemPrice'>
-                            70
-                        </div>
-                        <button className='removeButton'>
-                            Remove
-                        </button>
-                    </div>
-                </div>
-            </div>
+            {cart}
             <hr/>
             <button className='purchaseButton'>
                 Purchase

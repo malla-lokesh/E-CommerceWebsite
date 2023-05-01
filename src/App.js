@@ -5,12 +5,13 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Modal from './Components/UI/Modal';
 import Cart from './Components/Cart/Cart';
+import CartContextProvider from './Components/Store/CartContextProvider';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
 
   return (
-    <React.Fragment>
+    <CartContextProvider>
       <Modal showCart={showCart} hideCart={() => setShowCart(false)}>
         {showCart && <Cart hideCart={() => setShowCart(false)}/>}
       </Modal>
@@ -25,7 +26,7 @@ function App() {
         </button>
       </div>
       <Footer />
-    </React.Fragment>
+    </CartContextProvider>
   );
 }
 

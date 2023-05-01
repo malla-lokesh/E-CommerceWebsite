@@ -1,12 +1,14 @@
 .musicTitle {
     text-align: center;
     margin-top: 30px;
+    margin-bottom: 30px;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .products {
     display: flex;
+    display: inline-block;
     padding-left: 100px;
     padding-right: 100px;
     margin-bottom: 30px;
@@ -21,13 +23,7 @@
     justify-content: space-evenly;
 }
 
-.product1 {
-    flex: 1;
-    text-align: center;
-}
-
-.product2 {
-    flex: 1;
+.product {
     text-align: center;
 }
 
