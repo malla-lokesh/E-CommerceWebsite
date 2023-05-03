@@ -26,6 +26,7 @@ const CartContextProvider = (props) => {
         } else {
             const updatedItems = [...cartItems];
             updatedItems[index].quantity++;
+            updatedItems[index].price = item.price * updatedItems[index].quantity;
             setCartItems(updatedItems);
         }
         setItemsQuantity((prevQuantity) => prevQuantity + item.quantity);

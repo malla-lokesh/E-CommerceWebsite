@@ -1,32 +1,34 @@
 import './App.css';
-import React, { useState } from 'react';
-import Products from './Components/Products/Products';
-import Footer from './Components/Footer/Footer';
-import Header from './Components/Header/Header';
-import Modal from './Components/UI/Modal';
-import Cart from './Components/Cart/Cart';
-import CartContextProvider from './Components/Store/CartContextProvider';
+import React from 'react';
+import About from './Pages/About';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import MainNavigation from './Pages/MainNavigation';
+import Store from './Pages/Store/Store';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainNavigation/>,
+    children: [
+      {
+        path: "/",
+        element: <Store/>
+      },
+      {
+        path: "/about",
+        element: <About/>
+      },
+      {
+        path: "/store",
+        element: <Store/>
+      }
+    ]
+  }
+])
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
-
   return (
-    <CartContextProvider>
-      <Modal showCart={showCart} hideCart={() => setShowCart(false)}>
-        {showCart && <Cart hideCart={() => setShowCart(false)}/>}
-      </Modal>
-      <Header onShow={() => setShowCart(true)} showCart={showCart}/>
-      <div className='title'>
-        The Generics
-      </div>
-      <Products />
-      <div className='cartButtonDiv'>
-        <button className='cartButton' onClick={() => setShowCart(true)}>
-          See the Cart
-        </button>
-      </div>
-      <Footer />
-    </CartContextProvider>
+    <RouterProvider router={router}/>
   );
 }
 

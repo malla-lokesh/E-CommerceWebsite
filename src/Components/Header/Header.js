@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import './Header.css';
-import CartContext from "../Store/CartContext";
+import CartContext from "../contextStore/CartContext";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
     const cartCtx = useContext(CartContext);
@@ -8,9 +9,9 @@ const Header = (props) => {
     return (
         <header>
             <div className='nav'>
-                <a href='./index.html'>HOME</a>
-                <a href='./index.html'>STORE</a>
-                <a href='./index.html'>ABOUT</a>
+                <a href='/'>HOME</a>
+                <Link to='/store'>STORE</Link>
+                <Link to='/about'>ABOUT</Link>
                 <button className='cart' onClick={props.onShow}>
                     Cart
                     <span className='cartQuantity'>{cartCtx.itemsQuantity}</span>
