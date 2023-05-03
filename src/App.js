@@ -4,6 +4,7 @@ import About from './Pages/About';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainNavigation from './Pages/MainNavigation';
 import Store from './Pages/Store/Store';
+import Home from './Pages/Home';
 
 const router = createBrowserRouter([
   {
@@ -11,8 +12,8 @@ const router = createBrowserRouter([
     element: <MainNavigation/>,
     children: [
       {
-        path: "/",
-        element: <Store/>
+        path: "/home",
+        element: <Home/>
       },
       {
         path: "/about",

@@ -9,7 +9,7 @@ const Header = (props) => {
     return (
         <header>
             <div className='nav'>
-                <a href='/'>HOME</a>
+                <Link to='/home'>HOME</Link>
                 <Link to='/store'>STORE</Link>
                 <Link to='/about'>ABOUT</Link>
                 <button className='cart' onClick={props.onShow}>
