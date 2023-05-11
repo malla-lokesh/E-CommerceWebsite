@@ -12,6 +12,7 @@ const Header = (props) => {
                 <Link to='/home'>HOME</Link>
                 <Link to='/store'>STORE</Link>
                 <Link to='/about'>ABOUT</Link>
+                <Link to='/ContactUS'>Contact Us</Link>
                 <button className='cart' onClick={props.onShow}>
                     Cart
                     <span className='cartQuantity'>{cartCtx.itemsQuantity}</span>

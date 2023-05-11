@@ -1,10 +1,11 @@
 import './App.css';
-import React from 'react';
-import About from './Pages/About';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import MainNavigation from './Pages/MainNavigation';
+import React, { useState } from 'react';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import CartContextProvider from './Components/contextStore/CartContextProvider';
+import Modal from './Components/UI/Modal';
+import Cart from './Components/Cart/Cart';
 import Store from './Pages/Store/Store';
-import Home from './Pages/Home';
 
 const router = createBrowserRouter([
   {
@@ -12,8 +13,8 @@ const router = createBrowserRouter([
     element: <MainNavigation/>,
     children: [
       {
-        path: "/home",
-        element: <Home/>
+        path: "/",
+        element: <Store/>
       },
       {
         path: "/about",
@@ -28,8 +29,31 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+  const [showCart, setShowCart] = useState(false);
+
   return (
-    <RouterProvider router={router}/>
+    <CartContextProvider>
+      <Modal showCart={showCart} hideCart={() => setShowCart(false)}>
+        {showCart && <Cart hideCart={() => setShowCart(false)}/>}
+      </Modal>
+      <Header onShow={() => setShowCart(true)} showCart={showCart}/>
+        <div className='title'>
+          The Generics
+        </div>
+        <Route path='/home'>
+          <Home/>
+        </Route>
+        <Route path='/store'>
+          <Store/>
+        </Route>
+        <Route path='/about'>
+          <About/>
+        </Route>
+        <Route path='/ContactUs'>
+          <ContactUs/>
+        </Route>
+      <Footer/>
+    </CartContextProvider>
   );
 }
 
