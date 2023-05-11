@@ -2,21 +2,8 @@ import { useState } from "react";
 import CartContext from "./CartContext";
 
 const CartContextProvider = (props) => {
-    const [items, setItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [itemsQuantity, setItemsQuantity] = useState(0);
-
-    const addItemHandler = (item) => {
-        const index = items.findIndex((i) => i.title === item.title);
-
-        if(index === -1) {
-            setItems((prevItems) => [...prevItems, item]);
-        } else {
-            const updatedItems = [...items];
-            updatedItems[index].quantity++;
-            setItems(updatedItems);
-        }
-    }
 
     const addItemToCartHandler = (item) => {
         const index = cartItems.findIndex((i) => i.title === item.title);
@@ -32,12 +19,33 @@ const CartContextProvider = (props) => {
         setItemsQuantity((prevQuantity) => prevQuantity + item.quantity);
     };
 
+    const removeItemFromCartHandler = (item) => {
+        const index = cartItems.findIndex((i) => i.title === item.title);
+
+        if (index !== -1) {
+            const updatedItems = [...cartItems];
+            const itemToRemove = updatedItems[index];
+
+            if (itemToRemove.quantity === 1) {
+                updatedItems.splice(index, 1);
+            }
+            else {
+                const itemPrice = item.price / item.quantity;
+                itemToRemove.quantity = itemToRemove.quantity - 1;
+                itemToRemove.price -= itemPrice;
+                updatedItems[index] = itemToRemove;
+            }
+
+            setCartItems(updatedItems);
+            setItemsQuantity((prevQuantity) => prevQuantity - 1);
+        }
+    }
+
     const ctx = {
-        items: items,
         cartItems: cartItems,
         itemsQuantity: itemsQuantity,
-        addItem: addItemHandler,
-        addItemToCart: addItemToCartHandler
+        addItemToCart: addItemToCartHandler,
+        removeItemFromCart: removeItemFromCartHandler
     };
 
     return (

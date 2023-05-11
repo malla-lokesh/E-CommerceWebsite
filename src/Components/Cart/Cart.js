@@ -5,8 +5,12 @@ import CartContext from "../contextStore/CartContext";
 const Cart = (props) => {
     const cartCtx = useContext(CartContext);
 
+    const removeHandler = (item) => {
+        cartCtx.removeItemFromCart(item);
+    }
+
     const cart = cartCtx.cartItems.map((item) => {
-        return <div className='items'>
+        return <div key={item.title} className='items'>
                 <div className='cartItem'>
                     <div className='cartItemImageAndName'>
                         <img src={item.imageURL} alt="colors" className='cartItemImage'/>
@@ -21,7 +25,9 @@ const Cart = (props) => {
                         <div className='cartItemPrice'>
                             {item.price}
                         </div>
-                        <button className='removeButton'>
+                        <button 
+                            className='removeButton'
+                            onClick={() => removeHandler(item)}>
                             Remove
                         </button>
                     </div>
