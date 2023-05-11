@@ -6,27 +6,10 @@ import CartContextProvider from './Components/contextStore/CartContextProvider';
 import Modal from './Components/UI/Modal';
 import Cart from './Components/Cart/Cart';
 import Store from './Pages/Store/Store';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainNavigation/>,
-    children: [
-      {
-        path: "/",
-        element: <Store/>
-      },
-      {
-        path: "/about",
-        element: <About/>
-      },
-      {
-        path: "/store",
-        element: <Store/>
-      }
-    ]
-  }
-])
+import { Route } from 'react-router-dom/cjs/react-router-dom.min';
+import Home from './Pages/Home';
+import About from './Pages/About';
+import ContactUs from './Pages/ContactUs';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
