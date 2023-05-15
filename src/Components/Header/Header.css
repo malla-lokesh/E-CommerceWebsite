@@ -9,7 +9,7 @@ header {
     z-index: 1;
 }
 
-.nav {
+nav {
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -42,4 +42,10 @@ header {
 .cartQuantity:active {
     background-color: black;
     color: white;
+}
+
+header a:hover,
+header a:active,
+header a.active {
+    text-decoration: underline;
 }

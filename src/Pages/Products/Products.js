@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import './Products.css';
 import CartContext from "../../Components/contextStore/CartContext";
+import { NavLink } from "react-router-dom";
 
 const Products = () => {
 
@@ -40,7 +41,9 @@ const Products = () => {
                     <div className="productTitle">
                         {item.title}
                     </div>
-                    <img src={item.imageURL} alt={item.title} className='productImage'/>
+                    <NavLink to={`/store/${encodeURIComponent(JSON.stringify(item))}`}>
+                        <img src={item.imageURL} alt={item.title} className='productImage'/>
+                    </NavLink>
                     <div className='priceAndCartButton'>
                         <div className='productPrice'>
                             ${item.price}
