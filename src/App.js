@@ -11,6 +11,7 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import ContactUs from './Pages/ContactUs';
 import Item from './Pages/Item';
+import Login from './Pages/Login';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path='/about'>
             <About/>
+          </Route>
+          <Route path='/login'>
+            <Login/>
           </Route>
           <Route path='/ContactUs'>
             <ContactUs/>

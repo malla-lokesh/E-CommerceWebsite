@@ -12,6 +12,7 @@ const Header = (props) => {
                 <NavLink activeClassName='active' to='/home'>HOME</NavLink>
                 <NavLink activeClassName='active' to='/store'>STORE</NavLink>
                 <NavLink activeClassName='active' to='/about'>ABOUT</NavLink>
+                <NavLink activeClassName='active' to='/login'>LOGIN</NavLink>
                 <NavLink activeClassName='active' to='/ContactUS'>Contact Us</NavLink>
                 <button className='cart' onClick={props.onShow}>
                     Cart

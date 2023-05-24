@@ -1,0 +1,26 @@
+.formDiv {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonButton {
+    margin-top: 10px;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.buttonButton:hover {
+    background-color: rgb(201, 201, 201);
+    color: white;
+    transition: background-color 0.25s;
+    transition: color 0.25s;
+}
