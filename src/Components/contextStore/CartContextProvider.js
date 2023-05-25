@@ -2,7 +2,6 @@ import { useState } from "react";
 import CartContext from "./CartContext";
 
 const CartContextProvider = (props) => {
-    const [token, setToken] = useState(null);
     const [cartItems, setCartItems] = useState([]);
     const [itemsQuantity, setItemsQuantity] = useState(0);
 
@@ -42,16 +41,9 @@ const CartContextProvider = (props) => {
         }
     }
 
-    const setTokenHandler = (token) => {
-        setToken(token);
-        localStorage.setItem('token', token);
-    }
-
     const ctx = {
-        token: token,
         cartItems: cartItems,
         itemsQuantity: itemsQuantity,
-        setToken: setTokenHandler,
         addItemToCart: addItemToCartHandler,
         removeItemFromCart: removeItemFromCartHandler
     };

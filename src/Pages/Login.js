@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
 import './Login.css';
 import { Redirect } from "react-router-dom";
-import CartContext from "../Components/contextStore/CartContext";
+import AuthContext from "../Components/contextStore/AuthContext";
 
 const Login = () => {
     const [isLogin, setIsLogin] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirectToStore, setRedirectToStore] = useState(false);
-    const cartCtx = useContext(CartContext);
+    const authCtx = useContext(AuthContext);
 
     const switchLogin = () => {
         setIsLogin((prevState) => !prevState);
@@ -32,7 +32,6 @@ const Login = () => {
                 if (res.ok) {
                     setEmail('');
                     setPassword('');
-                    setRedirectToStore(true);
                     return res.json();
                 } else {
                     res.json().then(data => {
@@ -40,9 +39,9 @@ const Login = () => {
                         alert(errorMsg);
                     })
                 }
-            }).then(data => {
-                cartCtx.setToken(data.idToken);
-                console.log(data.idToken);
+            }).then((data) => {
+                authCtx.login(data.idToken);
+                setRedirectToStore(true);
             });
         } else {
             fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCRdEN-tq8JiA6Df-JHdjWfa4LduHBo9fE', {

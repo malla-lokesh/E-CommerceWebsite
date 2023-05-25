@@ -1,20 +1,22 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import CartContextProvider from './Components/contextStore/CartContextProvider';
 import Modal from './Components/UI/Modal';
 import Cart from './Components/Cart/Cart';
 import Store from './Pages/Store/Store';
-import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import { Redirect, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import ContactUs from './Pages/ContactUs';
 import Item from './Pages/Item';
 import Login from './Pages/Login';
+import AuthContext from './Components/contextStore/AuthContext';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
+  const authCtx = useContext(AuthContext);
 
   return (
     <CartContextProvider>
@@ -30,7 +32,7 @@ function App() {
             <Home/>
           </Route>
           <Route path='/store' exact>
-            <Store/>
+            {authCtx.isLoggedIn ? <Store/> : <Redirect to='login'/>}
           </Route>
           <Route path='/store/:item'>
             <Item />
