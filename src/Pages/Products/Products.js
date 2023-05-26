@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import './Products.css';
-import CartContext from "../../Components/contextStore/CartContext";
+// import CartContext from "../../Components/contextStore/CartContext";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../Components/contextStore/AuthContext";
 
 const Products = () => {
 
-    const cartCtx = useContext(CartContext);
+    // const cartCtx = useContext(CartContext);
+    const authCtx = useContext(AuthContext);
 
     const productsArr = [
         {
@@ -32,7 +34,25 @@ const Products = () => {
 
     const addToCartHandler = (item) => {
         const updatedItem = {...item, quantity: 1};
-        cartCtx.addItemToCart(updatedItem);
+        // cartCtx.addItemToCart(updatedItem);
+
+        fetch(`https://crudcrud.com/api/d1a14edce2d849bd8e540e8c714d2f5c/cart${authCtx.email}`, {
+            method: 'POST',
+            body: JSON.stringify(updatedItem),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => {
+            if(res.ok) {
+                return res.json();
+            }
+            else {
+                throw new Error('Failed to send items to backend API.');
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     };
 
     const products = productsArr.map((item) => {
